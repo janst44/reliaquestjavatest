@@ -1,3 +1,9 @@
+# Super important notes for hiring developer:
+* Normally i would return a standardized ApiResponse with data minimally a message, but the requirements seemed to indicate just returning a different response per request, so i decided to err on the side of caution.
+* For the integration test, I thought using a http mock would be the best way to test an external api (which is how I viewed the mockapi)
+* I didn’t immediately see anything that I’d typically write unit tests for, but I’m open to discussing if there are areas you think would benefit from it.
+---
+
 # ReliaQuest Coding Challenge
 
 #### In this assessment you will be tasked with filling out the functionality of different methods that will be listed further down.
