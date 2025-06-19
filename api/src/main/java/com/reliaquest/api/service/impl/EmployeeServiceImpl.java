@@ -35,6 +35,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.restTemplate = restTemplate;
         this.baseUrl = baseUrl;
     }
+
     @Retryable(maxAttempts = 5,
             backoff = @Backoff(delay = 10000, multiplier = 2.0, maxDelay = 60000, random = true))
     @Override
@@ -45,7 +46,8 @@ public class EmployeeServiceImpl implements EmployeeService {
                     baseUrl,
                     HttpMethod.GET,
                     null,
-                    new ParameterizedTypeReference<Response<List<Employee>>>() {}
+                    new ParameterizedTypeReference<Response<List<Employee>>>() {
+                    }
             );
             return Optional.ofNullable(response.getBody())
                     .map(Response::getData)
@@ -79,9 +81,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         log.info("Fetching employee with id: {}", id);
         try {
             ResponseEntity<Response<Employee>> response = restTemplate.exchange(
-                baseUrl + "/" + id,
-                HttpMethod.GET,
-                null,
+                    baseUrl + "/" + id,
+                    HttpMethod.GET,
+                    null,
                     new ParameterizedTypeReference<>() {
                     }
             );
@@ -137,9 +139,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         try {
             HttpEntity<CreateEmployeeRequest> requestEntity = new HttpEntity<>(request);
             ResponseEntity<Response<Employee>> response = restTemplate.exchange(
-                baseUrl,
-                HttpMethod.POST,
-                requestEntity,
+                    baseUrl,
+                    HttpMethod.POST,
+                    requestEntity,
                     new ParameterizedTypeReference<>() {
                     }
             );
@@ -168,7 +170,8 @@ public class EmployeeServiceImpl implements EmployeeService {
                     baseUrl,
                     HttpMethod.DELETE,
                     requestEntity,
-                    new ParameterizedTypeReference<Response<Boolean>>() {}
+                    new ParameterizedTypeReference<Response<Boolean>>() {
+                    }
             );
 
             return employee.getName();
@@ -179,5 +182,4 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new EmployeeApiException("Failed to delete employee", e);
         }
     }
-
 }

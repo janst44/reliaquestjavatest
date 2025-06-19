@@ -2,6 +2,7 @@
 * Normally i would return a standardized ApiResponse with data minimally a message, but the requirements seemed to indicate just returning a different response per request, so i decided to err on the side of caution.
 * For the integration test, I thought using a http mock would be the best way to test an external api (which is how I viewed the mockapi)
 * I didn’t immediately see anything that I’d typically write unit tests for, but I’m open to discussing if there are areas you think would benefit from it.
+* The retry functionality is set up to maximize the chance of getting a response from the external service assumming we want data to be as correct as possible (like if a delete didn't go through that could potentially be bad) I didn't go so far as to build anything more durable for communications, but that would definitely be more ideal. I mention this because you pointed out the need for scalability.
 ---
 
 # ReliaQuest Coding Challenge

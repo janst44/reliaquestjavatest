@@ -37,4 +37,4 @@ public class ApiExceptionHandler {
         error.put("message", "An unexpected error occurred");
         return error;
     }
-} 
+}

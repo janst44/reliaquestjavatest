@@ -7,7 +7,7 @@ import lombok.Data;
 public class CreateEmployeeRequest {
     @NotBlank
     private String name;
-    
+
     @Positive
     @NotNull
     private Integer salary;
@@ -15,7 +15,7 @@ public class CreateEmployeeRequest {
     @Min(0)
     @NotNull
     private Integer age;
-    
+
     @NotBlank
     private String title;
 }

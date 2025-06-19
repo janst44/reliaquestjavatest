@@ -71,8 +71,8 @@ class EmployeeControllerTest {
         Employee employee = Employee.builder().id("3").name("Charlie").build();
         Mockito.when(employeeService.createEmployee(any(CreateEmployeeRequest.class))).thenReturn(employee);
         mockMvc.perform(post("/api/v1/employees")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\":\"Charlie\",\"salary\":1000,\"age\":30,\"title\":\"Engineer\"}"))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"name\":\"Charlie\",\"salary\":1000,\"age\":30,\"title\":\"Engineer\"}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("Charlie"));
     }
@@ -94,4 +94,4 @@ class EmployeeControllerTest {
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.message").value("Not found"));
     }
-} 
+}
